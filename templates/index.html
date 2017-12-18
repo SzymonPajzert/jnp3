@@ -1,0 +1,17 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+      <link rel="stylesheet" href="/css/styles.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script type="text/javascript" src="/js/script.js" /></script>
+  </head>
+
+  <body ng-controller="GreetingController">
+    <div class="row">
+      {% for item in [0, 1, 2, 3, 4, 5] %}
+        <div id="lamp{{item}}" class="lamp" ng-class="{light: ask({{item}}), dark: !ask({{item}})}"></div>
+      {% endfor %}
+    </div>
+  </body>
+</html>

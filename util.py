@@ -9,4 +9,4 @@ def random_bool(size):
     for i in range(size):
         result.append(random.choice([True, False]))
 
-    return result
+    return tuple(result)

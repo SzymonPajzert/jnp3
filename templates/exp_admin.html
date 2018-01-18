@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Admin panel exp {{ experiment.id }}{% endblock %}
+
+{% block content %}
+
+    <h1>Admin experiment number {{ experiment.id }}</h1>
+    <form method="POST" action="/admin/{{ experiment.id }}">
+
+        {{ form.hidden_tag() }}
+        {{ form.feedback.label }}       {{ form.feedback() }} <br/>
+        {{ form.delay.label }}          {{ form.delay() }} <br/>
+        {{ form.size.label }}           {{ form.size() }} <br/>
+        {{ form.training_size.label }}  {{ form.training_size() }} <br/>
+        <input type="submit" value="Signup">
+    </form>
+
+{% endblock %}

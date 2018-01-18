@@ -1,22 +1,18 @@
-<!doctype html>
-<html ng-app="myApp">
-  <head>
-      <link rel="stylesheet" href="/css/styles.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script type="text/javascript" src="/js/script.js" /></script>
-  </head>
+{% extends "base.html" %}
 
-  <body ng-controller="GreetingController">
-    <div class="row">
-      {% for item in [0, 1, 2, 3, 4, 5] %}
-        <div
-          id="lamp{{item}}"
-          class="lamp"
-          ng-class="{light: ask({{item}}), dark: !ask({{item}})}">
+{% block html_tag %}ng-app="myApp"{% endblock %}
+{% block title %}Experiment{% endblock %}
 
-          </div>
-      {% endfor %}
-    </div>
-  </body>
-</html>
+{% block stylesheets %}{% endblock %}
+
+{% block head_space %}
+    <audio class="my_audio" controls preload="none" hidden>
+        <source src="http://localhost:5000/static/buzz.mp3" type="audio/mpeg">
+    </audio>
+{% endblock %}
+
+{% block body_controller %}ng-controller="GreetingController"{% endblock %}
+
+{% block content %}
+<div class="row" id="row"> </div>
+{% endblock %}

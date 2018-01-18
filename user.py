@@ -12,11 +12,11 @@ class SignupForm(FlaskForm):
 
 
 class User(UserMixin):
-    def __init__(self, username, password):
+    def __init__(self, username, password, is_admin):
         super(User, self).__init__()
         self.id = username
         self.password = password
-        self.is_admin = False
+        self.is_admin = is_admin
 
 
 class UserDatabase:

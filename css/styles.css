@@ -1,18 +1,21 @@
 .row {
-  width: 100%;
-  margin: 0 auto;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .lamp {
-  width: 30px;
-  height: 30px;
-  display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    margin: 3px;
+    text-align: center;
 }
 
 .lamp.light {
-  background-color: yellow;
+    background-color: yellow;
 }
 
 .lamp.dark {
-  background-color: gray;
+    background-color: gray;
 }

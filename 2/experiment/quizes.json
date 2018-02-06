@@ -1,0 +1,34 @@
+[{
+"numer": 1,
+"nazwa": "reguła abstrakcyjna (Johnson-Laird, Wason, 1970).",
+"treść": "Wyobraź sobie, że masz talię kart na których z jednej strony są litery alfabetu łacińskiego, a z drugiej strony liczby naturalne. Przypuszczasz, że litery i liczby na kartach są rozmieszczone zgodnie z następującą regułą: jeśli z jednej strony jest samogłoska, to z drugiej strony jest liczba parzysta, ale nie jesteś tego pewien (-na). Karty, które zobaczysz poniżej zostały wyciągnięte z tej talii.",
+"polecenie": "Zaznacz tylko te karty, które potrzebujesz odkryć aby przekonać się, że w Twojej talii powyższa reguła jest złamana.",
+"powtarzane": "Reguła ta prezentowana jest jeszcze raz poniżej.",
+"streszczenie": "jeśli z jednej strony jest samogłoska, to z drugiej strony jest liczba parzysta",
+"P": "A",
+"nP": "G",
+"Q": "4",
+"nQ": "7"
+}, {
+"numer": 2,
+"nazwa": "reguła tematyczna, na podstawie Wason (1968).",
+"treść": "Pan Jan Kowalski często podróżuje w delegacjach. Czasem jeździ samochodem a czasem pociągiem. Przypuszczasz, że: jeśli jedzie do Poznania, to podróżuje pociągiem. Karty, które zobaczysz poniżej przedstawiają formularze delegacji pana Kowalskiego na których, z jednej strony jest cel podróży, a z drugiej środek lokomocji.",
+"polecenie": "Zaznacz tylko te karty, które potrzebujesz odkryć aby przekonać się, że reguła, którą przypuszczasz, jest złamana.",
+"powtarzane": "Reguła ta prezentowana jest jeszcze raz poniżej.",
+"streszczenie": "jeśli jedzie do Poznania, to podróżuje pociągiem",
+"P": "jedzie do Poznania",
+"nP": "jedzie do Krakowa",
+"Q": "podróżuje pociągiem",
+"nQ": "podróżuje samochodem"
+}, {
+"numer": 3,
+"nazwa": "reguła pragmatyczna (Cheng i Holyoak, 1985).",
+"treść": "Wyobraź sobie, że jesteś urzędnikiem imigracyjnym na Międzynarodowym Porcie Lotniczym w Manili, stolicy Filipin. Między dokumentami, które musisz sprawdzić jest kartka nazywana formularzem Z. Jedna strona tego formularza zawiera informację czy osoba przyleciała na Filipiny - \"WJAZD\", czy też tylko podróżuje przez Filipiny tranzytem - \"TRANZYT\", podczas gdy druga strona zawiera listę nazw tropikalnych chorób przeciw którym pasażer był szczepiony w ciągu ostatnich 6 miesięcy. Musisz przekonać się, że: jeśli formularz z jednej informuje \"WJAZD\", to na drugiej stronie na liście chorób występuje malaria. Jest to regulacja zdrowotna, której celem tego jest upewnienie się, że pasażerowie przylatujący na Filipiny są chronieni przed tą chorobą. Karty, które zobaczysz poniżej przedstawiają cztery formularze typu Z. Wskaż, który z tych formularzy byś odwrócił(-a), aby sprawdzić powyższą regulację zdrowotną.",
+  "polecenie": "Zaznacz tylko te karty, które potrzebujesz sprawdzić, czy którakolwiek osoba złamała regulację zdrowotną.",
+  "powtarzane": "Reguła ta prezentowana jest jeszcze raz poniżej.",
+"streszczenie": "jeśli formularz z jednej informuje \"WJAZD\", to na drugiej stronie na liście chorób występuje malaria",
+"P": "jedzie do Poznania",
+"nP": "jedzie do Krakowa",
+"Q": "podróżuje pociągiem",
+"nQ": "podróżuje samochodem"
+}]

@@ -1,0 +1,66 @@
+
+.exp-background {
+    padding-top: 50px;
+    width: 100vw;
+    height: 90vh;
+}
+
+.exp-background.bad {
+    background-color: rgba(255, 0, 0, 0.39);
+}
+
+.exp-background.good {
+    background-color: rgba(0, 128, 0, 0.49);
+}
+
+.block {
+    border: 1px solid #414141;
+}
+
+.question {
+    width: 100%;
+    height: 250px;
+    margin: auto;
+    text-align: center;
+}
+
+span.vertical-center {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+button.next {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.question_short {
+    width: 100%;
+    height: 100px;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.answers {
+    margin: auto;
+    width: 800px;
+    padding: 20px;
+    text-align: center;
+    background-color: #fefff9;
+}
+
+.answer-button {
+    width: 160px;
+    height: 100px;
+
+    display: inline-block;
+    background-color: darkgrey;
+    margin: 5px;
+}
+
+.answer-button.selected {
+    background-color: white;
+}

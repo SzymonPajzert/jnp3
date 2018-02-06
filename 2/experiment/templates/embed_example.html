@@ -1,0 +1,46 @@
+{% extends "gil.html" %}
+
+{% block inside_gil %}
+
+    <div class="block answers">
+
+        <div class="question">
+
+            <span class="vertical-center">
+                {{ description }}<br>{{ goal }}
+            </span>
+
+        </div>
+
+
+        <hr>
+
+        <div class="question_short">
+
+
+
+            <strong>{{ description_short }}</strong>
+
+        </div>
+
+        {% for i in [0, 1, 2, 3] %}
+
+        <div class="block answer-button"
+             ng-click="clickedAnswer({{ i }}); $event.stopPropagation()"
+             ng-class="{selected: selected[{{ i }}]}">
+
+            {{ answers[i] }}
+
+        </div>
+
+        {% endfor %}
+
+
+
+    </div>
+
+    <button class="next block">
+    Dalej
+    </button>
+
+{% endblock %}

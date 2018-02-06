@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block html_tag %}ng-app="myApp"{% endblock %}
+{% block title %}Experiment{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block head_space %}
+
+{% endblock %}
+
+{% block body_controller %}ng-controller="GreetingController"{% endblock %}
+
+{% block content %}
+
+    <div id="hidden-data" hidden>{
+        "stage": {{ stage }},
+        "executionTime": {{ executionTime }},
+        "startMessage": "{{ startMessage }}"
+    }</div>
+
+    <div class="exp-background" ng-class="{bad: inactive, good: !inactive && arhythmic}" ng-click="clicked()">
+
+    {% block inside_gil %}{% endblock %}
+
+    </div>
+
+{% endblock %}

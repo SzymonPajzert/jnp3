@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import json
 
 from sqlalchemy import create_engine, MetaData
@@ -29,24 +31,24 @@ def init_db():
 
     config = ExperimentConfig(
         0, message={
-            1: "Nie klikaj rytmicznie!",
-            2: "Sprawdzimy czy nie klikasz rytmicznie",
-            3: "Poklikaj dodatkowo w przyciski",
-            4: "Postaraj się teraz odpowiadać poprawnie"
+            1: u"Nie klikaj rytmicznie!",
+            2: u"Sprawdzimy czy nie klikasz rytmicznie",
+            3: u"Poklikaj dodatkowo w przyciski",
+            4: u"Postaraj się teraz odpowiadać poprawnie"
         }, execution={
-            1: 1000,
-            2: 1000,
-            3: 1000,
+            1: 3000,
+            2: 3000,
+            3: 3000,
             4: 0
         })
 
-    with open("/home/svp/Programming/jnp3/2/experiment/quizes.json") as quizes_file:
+    with open("/home/svp/Programming/JNP3/2/experiment/quizes.json") as quizes_file:
         data = json.load(quizes_file)
 
         for element in data:
             quiz = experiment.models.Quiz(
                 element['nazwa'],
-                element['treść'],
+                element[u'treść'],
                 element['streszczenie'],
                 element['polecenie'],
 

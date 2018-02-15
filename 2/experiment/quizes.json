@@ -27,8 +27,20 @@
   "polecenie": "Zaznacz tylko te karty, które potrzebujesz sprawdzić, czy którakolwiek osoba złamała regulację zdrowotną.",
   "powtarzane": "Reguła ta prezentowana jest jeszcze raz poniżej.",
 "streszczenie": "jeśli formularz z jednej informuje \"WJAZD\", to na drugiej stronie na liście chorób występuje malaria",
-"P": "jedzie do Poznania",
-"nP": "jedzie do Krakowa",
-"Q": "podróżuje pociągiem",
-"nQ": "podróżuje samochodem"
+"P": "WJAZD",
+"nP": "WYJAZD",
+"Q": "malaria",
+"nQ": "kaszel"
+}, {
+  "numer": 4,
+  "nazwa": "reguła ostrożności, zadanie i reguła – własne",
+  "treść": "Wyobraź sobie, że pracujesz w firmie zajmującej się ocieplaniem wieżowców mieszkalnych. W firmie zdarzył się niedawno śmiertelny wypadek pomimo tego, że zaczęto w niej używać sprzętu asekuracyjnego, złożonego z uprzęży i lin, uniemożliwiającego upadek z rusztowania w razie pośliźnięcia się. Osoba, która zginęła nie zastosowała się do wprowadzonej reguły bezpieczeństwa: jeśli pracujesz na rusztowaniu, to powinieneś pracować w sprzęcie asekuracyjnym. Wcześniej zdarzyło Ci się wchodzić na rusztowania bez tego sprzętu ale nie pamiętasz czy wtedy pracowałeś (-aś). Karty, które zobaczysz poniżej przedstawiają cztery dni Twojej pracy przed wprowadzeniem reguły. Jedna strona karty niesie informację czy pracowałeś (-aś) na rusztowaniu, a druga strona karty wskazuję czy pracowałeś (-aś) w sprzęcie asekuracyjnym.",
+  "polecenie": "Zaznacz tylko te karty, które potrzebujesz odkryć aby przekonać się, czy kiedykolwiek złamałeś (-aś) regułę wystawiając się na niebezpieczeństwo.",
+  "powtarzane": "Reguła ta prezentowana jest jeszcze raz poniżej.",
+  "streszczenie": "jeśli pracujesz na rusztowaniu, to powinieneś pracować w sprzęcie asekuracyjnym",
+  "P": "pracowałeś(-aś) na rusztowaniu",
+  "nP": "nie pracowałeś(-aś) na rusztowaniu",
+  "Q": "pracowałeś(-aś) w sprzęcie asekuracyjnym",
+  "nQ": "nie pracowałeś(-aś) w sprzęcie asekuracyjnym"
 }]
+

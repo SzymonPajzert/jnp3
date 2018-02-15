@@ -72,7 +72,7 @@ function GreetingController($scope, $http, $compile, $interval, $timeout, $mdDia
         $mdDialog.show(
             $mdDialog.alert()
                 .parent(angular.element(document.querySelector('#popupContainer')))
-                .clickOutsideToClose(true)
+                .clickOutsideToClose(false)
                 .title('Wiadomość od eksperymentatora')
                 .textContent(message)
                 .ariaLabel('Experiment alert')
@@ -82,20 +82,7 @@ function GreetingController($scope, $http, $compile, $interval, $timeout, $mdDia
             $scope.startTime = $scope.curTime();
 
             if($scope.expData.executionTime !== 0) {
-                const url = document.location.pathname + $scope.expData.stage;
-
-                console.log("Sending to url: " + url);
-
-                $timeout(function () {
-                    $http.put(url, $scope.gatheredData.export())
-                        .success(function() {
-                            console.log("Managed to send the request")
-                        })
-                        .error(function() {
-                            console.log("Failed to send the request")
-                        })
-
-                }, $scope.expData.executionTime);
+                $timeout($scope.sendUpdate, $scope.expData.executionTime);
             }
 
         });
@@ -153,7 +140,42 @@ function GreetingController($scope, $http, $compile, $interval, $timeout, $mdDia
       $scope.checkRhythmic();
     }, 300, false);
 
-    $scope.showAlert($scope.expData.startMessage);
+    if($scope.expData.showAlert) {
+        $scope.showAlert($scope.expData.startMessage);
+    } else {
+        $scope.startTime = $scope.curTime();
+    }
+
+    $scope.sendUpdate = function () {
+        const url = document.location.pathname + $scope.expData.stage;
+
+        console.log("Sending to url: " + url);
+
+        $http.put(url, $scope.gatheredData.export())
+            .success(function() {
+                console.log("Managed to send the request");
+                $window.location.reload();
+            })
+            .error(function() {
+                console.log("Failed to send the request");
+            })
+    };
+
+    $scope.clickNext = function() {
+        console.log("Clicking next");
+
+        const url = document.location.pathname + "next";
+
+        $http.post(url, {})
+            .success(function() {
+                console.log("Managed to send the request");
+                $scope.sendUpdate();
+            })
+            .error(function() {
+                console.log("Failed to click next")
+            })
+
+    };
 }
 
 GreetingController.$inject = ['$scope', '$http', '$compile', '$interval', '$timeout', '$mdDialog', '$window'];

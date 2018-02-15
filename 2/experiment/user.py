@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """Module for user specific stuff like forms and classes"""
 from flask_login import UserMixin
 from flask_wtf import FlaskForm
@@ -8,7 +10,7 @@ from wtforms.validators import DataRequired
 class SignupForm(FlaskForm):
     pseudonim = StringField('pseudonim', validators=[DataRequired()])
     wiek = IntegerField('wiek', validators=[DataRequired()])
-    sex = RadioField('płeć', choices=[('man','mężczyzna'),('woman','kobieta')], validators=[DataRequired()])
+    sex = RadioField(u'płeć', choices=[('man',u'mężczyzna'),('woman','kobieta')], validators=[DataRequired()])
     submit = SubmitField("Rozpocznij")
 
 

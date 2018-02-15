@@ -1,5 +1,6 @@
 from functools import wraps
 from random import shuffle
+import json
 
 from flask import Flask, redirect, request, current_app
 from flask import jsonify
@@ -99,22 +100,37 @@ def experiment_route(id):
     stage = experiment.results.current_stage
     config = db_session.query(ExperimentConfig).get(experiment.config)
 
-    context = {
-        'stage': stage,
-        'executionTime': config.execution[stage],
-        'startMessage': config.message[stage]
-    }
+
+    if stage < 5:
+        context = {
+            'stage': stage,
+            'executionTime': config.execution[stage],
+            'startMessage': config.message[stage],
+            'showAlert': "true",
+        }
+    else:
+        context = {}
 
     if stage in [1, 2]:
         return render_template('gil.html', **context)
     elif stage in [3, 4]:
         if stage == 4:
             print(experiment.results.quiz_order)
+            print(experiment.results.current_quiz)
 
             quiz_id = experiment.results.quiz_order[experiment.results.current_quiz]
+
+            if experiment.results.current_quiz > 0:
+                # don't show alert
+                context['showAlert'] = "false"
+
             print('current quiz: {}'.format(quiz_id))
 
-            quiz = db_session.query(Quiz).get(quiz_id)
+            print(db_session.query(Quiz).count())
+
+            quiz = Quiz.query.get(quiz_id)
+
+            print(quiz)
 
             context['description'] = quiz.description
             context['description_short'] = quiz.description_short
@@ -138,7 +154,13 @@ def increase_counter(id):
         results = experiment.results
         results.current_quiz += 1
 
+        if results.current_quiz == len(results.quiz_order):
+            results.current_stage += 1
+
+        print('next: {}', results)
+
         Experiment.query.filter_by(id=id).update({'results': results})
+        db_session.commit()
 
         return "Ok"
 
@@ -161,12 +183,52 @@ def experiment_put_results(id, stage):
             db_session.commit()
 
             # we managed to parse the data
-            return redirect("/experiment/{}".format(id))
+            return "Ok"
         else:
             return "Unable to parse the data"
 
     else:
         return "Results sent for the wrong stage"
+
+@app.route('/export', methods=['GET', 'POST'])
+def export():
+    result = [['experiment', 'stage', 'question', 'time', 'event', 'id']]
+
+    for experiment in Experiment.query:
+        print(json.dumps(experiment.json()))
+
+        times = experiment.results.result_times
+
+        print(times)
+
+        eid = experiment.id
+
+        for key in times.keys():
+            if key == 4:
+
+                for question in times[key].keys():
+                    for time in times[key][question]["answer"]:
+                      result.append([eid, key, question, time['time'], 'answer', time['id']])
+
+                    for time in times[key][question]["click"]:
+                        result.append([eid, key, question, time, 'click', -1])
+
+            else:
+                for time in times[key]["answer"]:
+                    result.append([eid, key, -1, time['time'], 'answer', time['id']])
+
+                for time in times[key]["click"]:
+                    result.append([eid, key, -1, time, 'click', -1])
+
+    with open('export.csv', 'w') as output_file:
+        print("Dumping")
+        for row in result:
+            for cell in row:
+                output_file.write("{},".format(cell))
+
+            output_file.write('\n')
+
+    return "Ok"
 
 
 @app.route('/experiment/<int:id>/data/new', methods=['POST'])

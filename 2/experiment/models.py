@@ -74,6 +74,8 @@ class ExperimentResults:
         self.current_stage = 1
         self.current_quiz = None
         self.quiz_order = None
+        self.result_times = {}
+        self.result_times[4] = {}
 
     def digest_data(self, data):
         """Digests the data assuming it comes for the current stage.
@@ -83,13 +85,23 @@ class ExperimentResults:
         print("digesting: {}".format(data))
         print(self.current_stage)
 
-        self.current_stage += 1
+        if self.current_stage < 4:
+            self.result_times[self.current_stage] = data
+
+            self.current_stage += 1
 
         if self.current_stage == 4:
-            from random import shuffle
-            self.quiz_order = [x for x in range(db_session.query(Quiz).count())]
-            shuffle(self.quiz_order)
-            self.current_quiz = 0
+            if self.current_quiz is None:
+                from random import shuffle
+                self.quiz_order = [x + 3 for x in range(db_session.query(Quiz).count() - 2)]
+                shuffle(self.quiz_order)
+
+                self.quiz_order = [1,2] + self.quiz_order
+
+                self.current_quiz = 0
+
+            else:
+                self.result_times[self.current_stage][self.current_quiz] = data
 
         print(self.json())
 
@@ -99,7 +111,8 @@ class ExperimentResults:
         return {
             'current_stage': self.current_stage,
             'current_quiz': self.current_quiz,
-            'quiz_order': self.quiz_order
+            'quiz_order': self.quiz_order,
+            'result_times': self.result_times
         }
 
 
